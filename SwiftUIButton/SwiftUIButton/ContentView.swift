@@ -53,6 +53,14 @@ struct ContentView: View {
       .buttonStyle(GradienBackgroundStyle())
       
       
+      Button(action: {
+        print("Plus button tapped")
+      }) {
+        Image(systemName: "plus")
+          .font(.system(size: 40, weight: .black))
+      }
+      .buttonStyle(PlusButtonStyle())
+      
     }
   }
 }
@@ -71,8 +79,24 @@ struct GradienBackgroundStyle: ButtonStyle {
   }
 }
 
+struct PlusButtonStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .padding()
+      .foregroundColor(.white)
+      .background(Color.purple)
+      .clipShape(Circle())
+      .rotationEffect(Angle(degrees: configuration.isPressed ? 45.0 : 0.0), anchor: .center)
+  }
+}
+
+
+
+
+#if DEBUG
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
   }
 }
+#endif
