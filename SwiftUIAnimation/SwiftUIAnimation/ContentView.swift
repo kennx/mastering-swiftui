@@ -33,7 +33,7 @@ struct ContentView: View {
               .bold()
               .foregroundColor(.white)
         )
-          .transition(.offsetScaleOpacity)
+          .transition(.scaleAndOffset)
       }
     }
     .onTapGesture {
@@ -48,6 +48,9 @@ struct ContentView: View {
 extension AnyTransition {
   static var offsetScaleOpacity: AnyTransition {
     AnyTransition.offset(x: -600, y: 0).combined(with: .scale).combined(with: .opacity)
+  }
+  static var scaleAndOffset: AnyTransition {
+    AnyTransition.asymmetric(insertion: .scale(scale: 0, anchor: .bottom), removal: .offset(x: -600, y: 0))
   }
 }
 
