@@ -8,20 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var isLoading: Bool = false
+  @State private var recordBegin = false
+  @State private var recording = false
   
   var body: some View {
-    HStack {
-      ForEach(0...4, id: \.self) { index in
-        Circle()
-          .frame(width: 10, height: 10)
-          .foregroundColor(.green)
-          .scaleEffect(self.isLoading ? 0 : 1)
-          .animation(Animation.linear(duration: 0.6).repeatForever().delay(0.2 * Double(index)))
-      }
+    ZStack {
+      RoundedRectangle(cornerRadius: recordBegin ? 30: 5)
+        .frame(width: recordBegin ? 60 : 250, height: 60)
+        .foregroundColor(recordBegin ? .red : .green)
+        .overlay(
+          Image(systemName: "mic.fill")
+            .font(.system(.title))
+            .foregroundColor(.white)
+            .scaleEffect(recording ? 0.7 : 1)
+        )
+      
+      RoundedRectangle(cornerRadius: recordBegin ? 35 : 10)
+        .trim(from: 0, to: recordBegin ? 0 : 1)
+        .stroke(lineWidth: 5)
+        .frame(width: recordBegin ? 70 : 260, height: 70)
+        .foregroundColor(.green)
     }
-    .onAppear() {
-      self.isLoading = true
+    .onTapGesture {
+      withAnimation(.spring()) {
+        self.recordBegin.toggle()
+      }
+      withAnimation(.spring().repeatForever().delay(0.5)) {
+        self.recording.toggle()
+      }
     }
   }
 }
