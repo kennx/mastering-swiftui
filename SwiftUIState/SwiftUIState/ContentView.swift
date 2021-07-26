@@ -39,6 +39,7 @@ struct CounterButton: View {
       self.counter += 1
     }) {
       Circle()
+        .frame(width: 120, height: 120)
         .foregroundColor(color)
         .overlay(
           Text("\(counter)")
