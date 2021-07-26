@@ -8,37 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var recordBegin = false
-  @State private var recording = false
+  
+  @State private var show = false
   
   var body: some View {
-    ZStack {
-      RoundedRectangle(cornerRadius: recordBegin ? 30: 5)
-        .frame(width: recordBegin ? 60 : 250, height: 60)
-        .foregroundColor(recordBegin ? .red : .green)
+    VStack {
+      RoundedRectangle(cornerRadius: 10)
+        .frame(width: 300, height: 300)
+        .foregroundColor(.green)
         .overlay(
-          Image(systemName: "mic.fill")
-            .font(.system(.title))
+          Text("Show details")
+            .font(.system(.largeTitle, design: .rounded))
+            .bold()
             .foregroundColor(.white)
-            .scaleEffect(recording ? 0.7 : 1)
         )
       
-      RoundedRectangle(cornerRadius: recordBegin ? 35 : 10)
-        .trim(from: 0, to: recordBegin ? 0 : 1)
-        .stroke(lineWidth: 5)
-        .frame(width: recordBegin ? 70 : 260, height: 70)
-        .foregroundColor(.green)
+      if show {
+        RoundedRectangle(cornerRadius: 10)
+          .frame(width: 300, height: 300)
+          .foregroundColor(.purple)
+          .overlay(
+            Text("Well, here is the details")
+              .font(.system(.largeTitle, design: .rounded))
+              .bold()
+              .foregroundColor(.white)
+        )
+          .transition(.offsetScaleOpacity)
+      }
     }
     .onTapGesture {
       withAnimation(.spring()) {
-        self.recordBegin.toggle()
-      }
-      withAnimation(.spring().repeatForever().delay(0.5)) {
-        self.recording.toggle()
+        self.show.toggle()
       }
     }
   }
 }
+
+
+extension AnyTransition {
+  static var offsetScaleOpacity: AnyTransition {
+    AnyTransition.offset(x: -600, y: 0).combined(with: .scale).combined(with: .opacity)
+  }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
