@@ -9,15 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @State private var isPlaying = false
+  @State private var counter = 1
   
   var body: some View {
     Button(action: {
-      self.isPlaying.toggle()
+      self.counter += 1
     }) {
-      Image(systemName: isPlaying ? "stop.circle.fill" : "play.circle.fill")
-        .font(.system(size: 150))
-        .foregroundColor(isPlaying ? .red : .green)
+      Circle()
+        .frame(width: 200, height: 200)
+        .foregroundColor(.red)
+        .overlay(
+          Text("\(counter)")
+            .font(.system(size: 100, weight: .bold, design: .rounded))
+            .foregroundColor(.white)
+        )
     }
   }
 }
