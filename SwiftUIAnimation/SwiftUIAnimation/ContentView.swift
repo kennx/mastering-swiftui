@@ -9,82 +9,57 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @State private var isSubmit = false
-  @State private var rotationCircle = false
-  @State private var isDone = false
+  @State private var cardIndex: Int = 0
   
   var body: some View {
-    VStack {
+    VStack(alignment: .leading) {
+      HStack {
+        Text("Reading")
+          .font(.system(size: 64, weight: .black, design: .rounded))
+        Spacer()
+      }
+      .padding(.horizontal)
+      HStack {
+        Text("List")
+          .font(.system(size: 64, weight: .black, design: .rounded))
+        Spacer()
+      }
+      .padding(.horizontal)
       ZStack {
-        RoundedRectangle(cornerRadius: 28)
-          .foregroundColor(isDone ? .red : .green)
-          .frame(width: isSubmit ? 300 : 200, height: 56)
-          .animation(.easeInOut(duration: 0.1))
-        
-        if !isSubmit {
-          Text("Submit")
-            .font(.system(.title, design: .rounded))
-            .bold()
-            .foregroundColor(.white)
-        }
-        
-        if isSubmit && !isDone {
-          HStack {
-            Circle()
-              .trim(from: 0.0, to: 0.8)
-              .stroke(Color.white, lineWidth: 4)
-              .frame(width: 26, height: 26)
-              .rotationEffect(Angle(degrees: self.rotationCircle ? 360 : 0))
-              .animation(.linear.repeatForever(autoreverses: false))
-            
-            Text("Progressing")
-              .font(.system(.title, design: .rounded))
-              .bold()
-              .foregroundColor(.white)
-          }
-          .onAppear() {
-            self.rotationCircle.toggle()
-            self.startProcessing()
-          }
-        }
-        
-        if isDone {
-          Text("Done")
-            .font(.system(.title, design: .rounded))
-            .bold()
-            .foregroundColor(.white)
-            .onAppear() {
-              self.doneProcessing()
-            }
+        switch cardIndex {
+        case 0:
+          CardView(image: "swiftui-button", category: "SwiftUI", heading: "Drawing a Border with Rounded Corners", author: "Simon Ng")
+            .transition(.asymmetric(insertion: .scale(scale: 1, anchor: .bottom).combined(with: .opacity), removal: .scale(scale: 0, anchor: .bottom).combined(with: .opacity)))
+        case 1:
+          CardView(image: "macos-programming", category: "macOS", heading: "Building a Simple Editing App", author: "Gabriel Theodoropoulos")
+            .transition(.asymmetric(insertion: .scale(scale: 1, anchor: .bottom).combined(with: .opacity), removal: .scale(scale: 0, anchor: .bottom).combined(with: .opacity)))
+        case 2:
+          CardView(image: "flutter-app", category: "Flutter", heading: "Building Complex Layout with Flutter", author: "Lawrence Tan")
+            .transition(.asymmetric(insertion: .scale(scale: 1, anchor: .bottom).combined(with: .opacity), removal: .scale(scale: 0, anchor: .bottom).combined(with: .opacity)))
+        case 3:
+          CardView(image: "natural-language-api", category: "iOS", heading: "What's New in Natural Language API", author: "Sai Kambampati")
+            .transition(.asymmetric(insertion: .scale(scale: 1, anchor: .bottom).combined(with: .opacity), removal: .scale(scale: 0, anchor: .bottom).combined(with: .opacity)))
+        default:
+          CardView(image: "swiftui-button", category: "SwiftUI", heading: "Drawing a Border with Rounded Corners", author: "Simon Ng")
+            .transition(.asymmetric(insertion: .scale(scale: 1, anchor: .bottom).combined(with: .opacity), removal: .scale(scale: 0, anchor: .bottom).combined(with: .opacity)))
         }
         
         
       }
-    }
-    .onTapGesture {
-      if !self.rotationCircle && !self.isDone {
-        self.isSubmit.toggle()
+      .onTapGesture {
+        withAnimation(.spring()) {
+          if self.cardIndex >= 3 {
+            self.cardIndex = 0
+          } else {
+            self.cardIndex += 1
+          }
+        }
       }
+      Spacer()
     }
+    
   }
   
-  private func startProcessing() {
-    // 使用DispatchQueue.main.asyncAfter 模擬一個處理程序
-    // 在實際的專案中，你需要在這邊執行一項任務
-    // 任務完成之後，將完成狀態設定為 true
-    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-      self.isDone.toggle()
-      self.rotationCircle.toggle()
-    }
-  }
-  
-  private func doneProcessing() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-      self.isSubmit = false
-      self.rotationCircle = false
-      self.isDone = false
-    }
-  }
   
 }
 
