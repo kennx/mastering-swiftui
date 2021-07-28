@@ -9,6 +9,20 @@
 import SwiftUI
 
 struct ContentView: View {
+  
+  init() {
+    let navBarAppearance = UINavigationBarAppearance()
+    navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemRed, .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
+    navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.systemRed, .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+    
+    navBarAppearance.setBackIndicatorImage(UIImage(systemName: "arrow.turn.up.left"), transitionMaskImage: UIImage(systemName: "arrow.turn.up.left"))
+    
+    UINavigationBar.appearance().tintColor = .black
+    
+    UINavigationBar.appearance().standardAppearance = navBarAppearance
+    UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+    UINavigationBar.appearance().compactAppearance = navBarAppearance
+  }
     
     var restaurants = [ Restaurant(name: "Cafe Deadend", image: "cafedeadend"),
                    Restaurant(name: "Homei", image: "homei"),
@@ -34,11 +48,16 @@ struct ContentView: View {
     ]
     
     var body: some View {
+      NavigationView {
         List {
-            ForEach(restaurants) { restaurant in
-                BasicImageRow(restaurant: restaurant)
-            }
+              ForEach(restaurants) { restaurant in
+                NavigationLink(destination: RestaurantDetailView(restaurant: restaurant)) {
+                  BasicImageRow(restaurant: restaurant)
+                }
+              }
         }
+        .navigationBarTitle("Restaurants", displayMode: .automatic)
+      }
     }
 }
 
@@ -52,6 +71,23 @@ struct Restaurant: Identifiable {
     var id = UUID()
     var name: String
     var image: String
+}
+
+struct RestaurantDetailView: View {
+  var restaurant: Restaurant
+  
+  var body: some View {
+    VStack {
+      Image(restaurant.image)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .clipped()
+      Text(restaurant.name)
+        .font(.system(.title, design: .rounded))
+        .fontWeight(.black)
+      Spacer()
+    }
+  }
 }
 
 struct BasicImageRow: View {
