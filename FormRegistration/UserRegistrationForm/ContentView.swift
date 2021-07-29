@@ -37,7 +37,7 @@ struct ContentView: View {
             .padding()
             
           FormField(fieldName: "Confirm Password", fieldValue: $userRegistrationViewModel.passwordConfirm, isSecure: true)
-          RequirementText(iconColor: userRegistrationViewModel.isPasswordConfirmValid ? Color.secondary : Color(red: 251/255, green: 128/255, blue: 128/255) ,text: "Your confirm password should be the same as password", isStrikeThrough: userRegistrationViewModel.isPasswordCapitalLetter)
+          RequirementText(iconColor: userRegistrationViewModel.isPasswordConfirmValid ? Color.secondary : Color(red: 251/255, green: 128/255, blue: 128/255) ,text: "Your confirm password should be the same as password", isStrikeThrough: userRegistrationViewModel.isPasswordConfirmValid)
                 .padding()
                 .padding(.bottom, 50)
             
