@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3803A0E626B234E600D33E97 /* UserRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3803A0E526B234E600D33E97 /* UserRegistrationViewModel.swift */; };
 		F4984FD1234C870D00CA23A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4984FD0234C870D00CA23A1 /* AppDelegate.swift */; };
 		F4984FD3234C870E00CA23A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4984FD2234C870E00CA23A1 /* SceneDelegate.swift */; };
 		F4984FD5234C870E00CA23A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4984FD4234C870E00CA23A1 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3803A0E526B234E600D33E97 /* UserRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewModel.swift; sourceTree = "<group>"; };
 		F4984FCD234C870D00CA23A1 /* UserRegistrationForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserRegistrationForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4984FD0234C870D00CA23A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4984FD2234C870E00CA23A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				F4984FDB234C871000CA23A1 /* LaunchScreen.storyboard */,
 				F4984FDE234C871000CA23A1 /* Info.plist */,
 				F4984FD8234C871000CA23A1 /* Preview Content */,
+				3803A0E526B234E600D33E97 /* UserRegistrationViewModel.swift */,
 			);
 			path = UserRegistrationForm;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3803A0E626B234E600D33E97 /* UserRegistrationViewModel.swift in Sources */,
 				F4984FD1234C870D00CA23A1 /* AppDelegate.swift in Sources */,
 				F4984FD3234C870E00CA23A1 /* SceneDelegate.swift in Sources */,
 				F4984FD5234C870E00CA23A1 /* ContentView.swift in Sources */,
