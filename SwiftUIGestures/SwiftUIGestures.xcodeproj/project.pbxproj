@@ -11,6 +11,7 @@
 		3863E51526B38D4800B3FE44 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3863E51426B38D4800B3FE44 /* ContentView.swift */; };
 		3863E51726B38D4B00B3FE44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3863E51626B38D4B00B3FE44 /* Assets.xcassets */; };
 		3863E51A26B38D4B00B3FE44 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3863E51926B38D4B00B3FE44 /* Preview Assets.xcassets */; };
+		3863E52226B3D75A00B3FE44 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3863E52126B3D75A00B3FE44 /* DraggableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		3863E51626B38D4B00B3FE44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3863E51926B38D4B00B3FE44 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3863E51B26B38D4B00B3FE44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3863E52126B3D75A00B3FE44 /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3863E51626B38D4B00B3FE44 /* Assets.xcassets */,
 				3863E51B26B38D4B00B3FE44 /* Info.plist */,
 				3863E51826B38D4B00B3FE44 /* Preview Content */,
+				3863E52126B3D75A00B3FE44 /* DraggableView.swift */,
 			);
 			path = SwiftUIGestures;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3863E52226B3D75A00B3FE44 /* DraggableView.swift in Sources */,
 				3863E51526B38D4800B3FE44 /* ContentView.swift in Sources */,
 				3863E51326B38D4800B3FE44 /* SwiftUIGesturesApp.swift in Sources */,
 			);

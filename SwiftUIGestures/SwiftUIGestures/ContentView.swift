@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
   
+  @GestureState private var dragState = DragState.inactive
+  
   @GestureState private var isPressed = false
   
   @GestureState private var dragOffset = CGSize.zero
@@ -17,7 +19,7 @@ struct ContentView: View {
   var body: some View {
     Image(systemName: "star.circle.fill")
       .font(.system(size: 100))
-      .opacity(isPressed ? 0.5 : 1.0)
+      .opacity(dragState.isPressing ? 0.5 : 1.0)
       .offset(x: position.width + dragOffset.width, y: position.height + dragOffset.height)
       .animation(.easeInOut)
       .foregroundColor(.green)
@@ -28,12 +30,12 @@ struct ContentView: View {
             state = currentState
           }
           .sequenced(before: DragGesture())
-          .updating($dragOffset) { (value, state, transaction) in
+          .updating($dragState) { (value, state, transaction) in
             switch value {
             case .first(true):
-              print("Tapping")
+              state = .pressing
             case .second(true, let drag):
-              state = drag?.translation ?? .zero
+              state = .dragging(translation: drag?.translation ?? .zero)
             default:
               break
             }
@@ -54,3 +56,5 @@ struct ContentView_Previews: PreviewProvider {
     ContentView()
   }
 }
+
+
